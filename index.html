@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body>
@@ -1543,7 +1544,7 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form action="https://formsubmit.co/kunal97saxena@gmail.com" method="POST" class="form" data-form>
+          <!-- <form action="https://formsubmit.co/kunal97saxena@gmail.com" method="POST" class="form" data-form>
 
             <div class="input-wrapper">
               <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
@@ -1558,6 +1559,19 @@
               <span>Send Message</span>
             </button>
 
+          </form> -->
+          <form id="contact-form" class="form" data-form>
+            <div class="input-wrapper">
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+    
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+    
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
           </form>
 
         </section>

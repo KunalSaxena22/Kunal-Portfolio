@@ -106,8 +106,47 @@ var _loop = function _loop(_i4) {
 
 for (var _i4 = 0; _i4 < formInputs.length; _i4++) {
   _loop(_i4);
-} // page navigation variables
+} // add event to form submission
 
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault(); // prevent default form submission
+  // disable form button
+
+  formBtn.setAttribute("disabled", ""); // get form data
+
+  var formData = new FormData(form);
+  var name = formData.get("name");
+  var email = formData.get("email");
+  var message = formData.get("message"); // send email using smtpjs
+
+  Email.send({
+    Host: "smtp.elasticemail.com",
+    // Replace with your SMTP server host
+    Username: "kunal2022saxena@gmail.com",
+    // Replace with your SMTP server username
+    Password: "A1E903086D137FDCFFA85412F0899C4A55B7",
+    // Replace with your SMTP server password
+    To: "kunal97saxena@gmail.com",
+    // Replace with your email address
+    From: "kunal2022saxena@gmail.com",
+    // Use the user's email as the from address
+    Subject: "New Contact Form Submission",
+    Body: "Name: ".concat(name, "<br>Email: ").concat(email, "<br>Message: ").concat(message)
+  }).then(function (message) {
+    console.log(message); // log the response from smtpjs
+
+    alert("Email sent successfully!");
+    form.reset(); // reset form fields
+
+    formBtn.removeAttribute("disabled"); // enable form button
+  })["catch"](function (error) {
+    console.error("Error:", error); // log any errors
+
+    alert("An error occurred. Please try again later.");
+    formBtn.removeAttribute("disabled"); // enable form button
+  });
+}); // page navigation variables
 
 var navigationLinks = document.querySelectorAll("[data-nav-link]");
 var pages = document.querySelectorAll("[data-page]"); // add event to all nav link

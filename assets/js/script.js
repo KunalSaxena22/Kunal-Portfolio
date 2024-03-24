@@ -135,6 +135,44 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+// add event to form submission
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // prevent default form submission
+
+  // disable form button
+  formBtn.setAttribute("disabled", "");
+
+  // get form data
+  const formData = new FormData(form);
+  const name = formData.get("name");
+  const email = formData.get("email");
+  const message = formData.get("message");
+
+  // send email using smtpjs
+  Email.send({
+    Host: "smtp.elasticemail.com", // Replace with your SMTP server host
+    Username: "kunal2022saxena@gmail.com", // Replace with your SMTP server username
+    Password: "A1E903086D137FDCFFA85412F0899C4A55B7", // Replace with your SMTP server password
+    To: "kunal97saxena@gmail.com", // Replace with your email address
+    From: "kunal2022saxena@gmail.com", // Use the user's email as the from address
+    Subject: "New Contact Form Submission",
+    Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
+  }).then(
+    message => {
+      console.log(message); // log the response from smtpjs
+      alert("Email sent successfully!");
+      form.reset(); // reset form fields
+      formBtn.removeAttribute("disabled"); // enable form button
+    }
+  ).catch(
+    error => {
+      console.error("Error:", error); // log any errors
+      alert("An error occurred. Please try again later.");
+      formBtn.removeAttribute("disabled"); // enable form button
+    }
+  );
+});
+
 
 
 // page navigation variables
