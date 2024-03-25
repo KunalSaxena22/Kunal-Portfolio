@@ -131,7 +131,7 @@ form.addEventListener("submit", function (e) {
     // Replace with your email address
     From: "kunal2022saxena@gmail.com",
     // Use the user's email as the from address
-    Subject: "New Contact Form Submission",
+    Subject: "Someone wants to contact you, Kunal, from your portfolio.",
     Body: "Name: ".concat(name, "<br>Email: ").concat(email, "<br>Message: ").concat(message)
   }).then(function (message) {
     console.log(message); // log the response from smtpjs

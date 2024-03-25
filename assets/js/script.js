@@ -155,7 +155,7 @@ form.addEventListener("submit", function(e) {
     Password: "A1E903086D137FDCFFA85412F0899C4A55B7", // Replace with your SMTP server password
     To: "kunal97saxena@gmail.com", // Replace with your email address
     From: "kunal2022saxena@gmail.com", // Use the user's email as the from address
-    Subject: "New Contact Form Submission",
+    Subject: "Someone wants to contact you, Kunal, from your portfolio.",
     Body: `Name: ${name}<br>Email: ${email}<br>Message: ${message}`
   }).then(
     message => {
